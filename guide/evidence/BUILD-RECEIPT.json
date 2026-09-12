@@ -1,0 +1,1 @@
+{"built_at": "2026-09-12", "checks_passed": ["13 page files present", "8 stories mapped to topics", "6 decisions mapped to topics", "4 contracts catalogued", "18 sources catalogued", "7 flow specs present and valid", "3 diagram stubs resolve"], "flow_count": 7, "generator": "guide/scripts/build.mjs (no external dependencies)", "topic_count": 13}

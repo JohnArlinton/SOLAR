@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%230A2138'/%3E%3Ccircle cx='20' cy='14' r='6' fill='%23FFB627'/%3E%3Cpath d='M10 25h20l-3 9H13z' fill='%2300B4A2'/%3E%3C/svg%3E">
+<title>Model evidence — HEJ Energy &amp; Technology Solar BESS Flows</title>
+<script>(function(){try{var p=new URLSearchParams(location.search).get('theme');var t=(p==='light'||p==='dark')?p:null;if(!t){try{t=localStorage.getItem('solar-theme')}catch(_){}}if(t!=='light'&&t!=='dark')t='light';document.documentElement.setAttribute('data-theme',t)}catch(_){}})();</script>
+<style>
+:root,[data-theme="light"]{--bg:#F6F8FB;--panel:#FFFFFF;--ink:#16222E;--muted:#4A5B6B;--line:#DCE4EC;--accent:#0E2E4F;--link:#0B3D91;color-scheme:light}
+[data-theme="dark"]{--bg:#0B1523;--panel:#131F30;--ink:#E8EEF5;--muted:#9FB0C2;--line:#2A3B52;--accent:#FFB627;--link:#FFB627;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.brandbar{background:linear-gradient(115deg,#0A2138 0%,#0E2E4F 55%,#0B4F4A 130%);color:#fff}.brandwrap{width:min(960px,calc(100% - 32px));margin:auto;padding:14px 0}.brand{display:inline-flex;align-items:center;gap:12px;color:#fff;text-decoration:none}.mark{flex:none}.wordmark strong{display:block;font-size:.98rem;letter-spacing:-.01em;line-height:1.2}.wordmark small{display:block;font:600 .66rem/1.5 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:#FFB627}
+main{width:min(960px,calc(100% - 32px));margin:auto;padding:32px 0 64px}a{color:var(--link)}.brandbar a{color:#fff}.top{display:inline-block;font:700 .72rem/1.2 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;margin:0}.top a{color:inherit}h1{font-size:clamp(1.7rem,4vw,2.6rem);letter-spacing:-.025em;line-height:1.1;margin:.5em 0 .2em}h1::after{content:"";display:block;width:120px;height:4px;border-radius:2px;margin-top:12px;background:linear-gradient(90deg,#FFB627,#FF8C1A,#00B4A2)}section{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:16px 0;box-shadow:0 10px 28px #0a213814}h2{margin:.2em 0;font-size:1.15rem;letter-spacing:-.015em}blockquote{margin:10px 0;padding:8px 14px;border-left:4px solid #FFB627;color:var(--ink)}cite{display:block;font-size:.82rem;color:var(--muted);font-style:normal}button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:10px;padding:6px 12px;font:inherit;cursor:pointer}button:hover{border-color:#FFB627}button:focus-visible,a:focus-visible{outline:3px solid #FFB627;outline-offset:2px}.brandwrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.backmenu{display:inline-block;padding:6px 14px;border-radius:999px;background:#FFB627;color:#0A2138;font:700 .72rem/1.5 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}.backmenu:hover{background:#FFC95C}.backmenu:focus-visible{outline:3px solid #FFB627;outline-offset:3px}footer.site{margin-top:36px;border-top:1px solid var(--line);padding-top:18px;font-size:.88rem;color:var(--muted)}.site-brand{font:700 .72rem/1.5 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+</style>
+</head>
+<body><header class="brandbar"><div class="brandwrap"><a class="brand" href="index.html" aria-label="HEJ Energy and Technology — collection home"><svg class="mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect width="40" height="40" rx="9" fill="#0A2138" stroke="#FFB627" stroke-opacity=".45"/><circle cx="20" cy="13.5" r="5.4" fill="#FFB627"/><g stroke="#FFB627" stroke-width="1.8" stroke-linecap="round"><line x1="20" y1="3.4" x2="20" y2="5.6"/><line x1="27.4" y1="6.1" x2="25.9" y2="7.6"/><line x1="30.2" y1="13.5" x2="28" y2="13.5"/><line x1="27.4" y1="20.9" x2="25.9" y2="19.4"/><line x1="12.6" y1="6.1" x2="14.1" y2="7.6"/><line x1="9.8" y1="13.5" x2="12" y2="13.5"/><line x1="12.6" y1="20.9" x2="14.1" y2="19.4"/></g><path d="M10 25.5h20l-2.8 8.5H12.8z" fill="#00B4A2"/><g stroke="#0A2138" stroke-width="1.2"><line x1="15" y1="25.5" x2="16" y2="34"/><line x1="20" y1="25.5" x2="20" y2="34"/><line x1="25" y1="25.5" x2="24" y2="34"/><line x1="11.2" y1="29.5" x2="28.8" y2="29.5"/></g></svg><span class="wordmark"><strong>HEJ Energy &amp; Technology</strong><small>Rooftop Solar + Storage · Victoria</small></span></a><a class="backmenu" href="../index.html">← Back to main menu</a></div></header><main>
+<p class="top"><a href="../index.html">← Back to main menu</a> · <a href="index.html">← Collection</a> · Model evidence</p>
+<h1>Annotated excerpts</h1>
+<p>Grouped research excerpts with chapter labels. The source is the .docx; there are no code links. Figures are planning assumptions — verify at site and at financial close. <button id="theme" type="button">Toggle light/dark</button></p>
+
+<section id="routes"><h2>Business routes · flows 01, 02, 07</h2>
+<blockquote>Two routes, one energy core. Route A (property ownership, opportunistic): buy the commercial property and control roof, building, and tenancy — high capital, slow scale, property + energy asset. Route B (rooftop lease/licence, primary): 20–30 year roof rights while the SPV owns PV + BESS — much lower capital, scalable portfolio. Hybrid: SolarCo holds owned + leased assets as one energy portfolio. Preliminary winner: Route B.<cite>Source: HEJ business model realignment, Sep 2026 · confirm capital and term per site</cite></blockquote>
+<blockquote>Same energy core both routes: PV + optional BESS (sized from load profile + export limit, never a generic ratio) + tenant offtake + grid export.<cite>Source: sizing rule · verify load and offer per site</cite></blockquote>
+</section>
+
+<section id="market-roles"><h2>Market roles: who buys, who carries, who optimises · flows 01, 03, 06</h2>
+<blockquote>Anchor buyer: the Tier-1 tenant under an onsite PPA. Export buyer: a licensed retailer or wholesale market participant. Under-30 MW General Exemption Order pathway: export sold to a licensed retailer.<cite>Source: offtake model · re-price per site</cite></blockquote>
+<blockquote>Never buyers: the aggregator/VPP (controls and optimises the fleet, monetises flexibility via arbitrage and FCAS — it does not buy energy); the DNSP (AusNet, CitiPower, Jemena, Powercor, United Energy) provides connection, transport, and constraints only; VicGrid does transmission planning and connections only and rarely touches sub-2 MW rooftop; AEMO/NEM is the market and settlement framework, not a customer.<cite>Source: regulatory map · confirm offer per site</cite></blockquote>
+</section>
+
+<section id="gates"><h2>Investment gates and offtake strategy · flow 02</h2>
+<blockquote>Five investment gates for every site: (1) roof control, (2) tenant load/offtake, (3) DNSP connection/export, (4) approvals (planning/electrical/fire/BESS per address), (5) bankable offtake + economics. Due diligence runs as parallel property/tenant/energy tracks converging in the financial model, then a GO/NO-GO gate, then financial close → construction → operation → replicate (Route B: Warehouse 001 → 002 → …).<cite>Source: screening model · verify per site</cite></blockquote>
+<blockquote>Explicit Energy Offtake Strategy step before financial close: who pays per kWh, what contract/price/term, under what connection and market rules.<cite>Source: offtake model · lock at close</cite></blockquote>
+</section>
+
+<section id="route-risks"><h2>Route cautions · flows 02, 07</h2>
+<blockquote>Tenant churn risk; a 5-year lease is insufficient for a 20–30 year asset; mortgagee consent required; roof repair/replacement duties defined upfront; connection cost unknowns held as walk-away thresholds; the retailer is not obliged to buy at our price.<cite>Source: risk register · price and assign every row before close</cite></blockquote>
+</section>
+
+<section id="ecosystem"><h2>Ecosystem · flows 01, 06</h2>
+<blockquote>Thesis: a distributed energy platform, not a solar farm on a roof. First pilot 0.5–2 MWp PV with 1–4 MWh BESS on a long-lived roof with high daytime load and a strong DNSP connection.<cite>Source: research Ch.1 + Ch.11 pilot blueprint · planning assumption</cite></blockquote>
+<blockquote>Chain: roof rights → structure → load → connection → PV + BESS → dispatch → offtake → settlement → O&amp;M → exit.<cite>Source: research bottom line · sequence reference</cite></blockquote>
+</section>
+
+<section id="screening"><h2>Site screening · flow 02</h2>
+<blockquote>Parallel property/tenant/energy tracks with a scoring matrix and 8 data requests; structural and DNSP evidence converge before commercial spend. See also <a href="#gates">investment gates</a>.<cite>Source: research Ch.3 · verify request list at site</cite></blockquote>
+</section>
+
+<section id="planning"><h2>Planning thresholds · flows 02, 03</h2>
+<blockquote>Planning permit path at or above 1 MW goes to the minister; ESC licensing, AEMO/NEM registration, and ESV standards apply by size and role.<cite>Source: research Ch.2 regulatory map · planning assumption, confirm with adviser</cite></blockquote>
+</section>
+
+<section id="connection"><h2>Grid connection · flow 03</h2>
+<blockquote>DNSP-specific pathway (Powercor, CitiPower, Jemena, United Energy): enquiry → application → offer → capacity/augmentation → approval → energisation.<cite>Source: research Ch.2–Ch.4 · confirm offer per site</cite></blockquote>
+</section>
+
+<section id="yield"><h2>Yield and footprint · flows 02, 04</h2>
+<blockquote>About 1 MWp yields ~1.31 GWh/yr in Melbourne (~3.6 kWh/kW/day); about 6000–8000 m² of roof per MWp.<cite>Source: research Ch.4 · planning assumptions, verify with SunSPOT + shading</cite></blockquote>
+</section>
+
+<section id="battery"><h2>Battery · flows 04, 07</h2>
+<blockquote>Usable capacity sits below nameplate; ground-mounted compound preferred; thermal and fire design throughout; augmentation budget at about years 7–10.<cite>Source: research Ch.5 · planning assumption</cite></blockquote>
+</section>
+
+<section id="commission"><h2>Install and commission · flow 05</h2>
+<blockquote>ESV standards AS/NZS 5033, 5139, 4777; CFA fire requirements; EPA noise and waste scope; DNSP witness before energisation.<cite>Source: research Ch.2 · obligations, not design values</cite></blockquote>
+</section>
+
+<section id="revenue"><h2>Revenue stack · flow 06</h2>
+<blockquote>Onsite savings primary; export secondary; arbitrage secondary; FCAS upside; certificates at a haircut. Worked illustration 60/40 onsite/export at 0.12/0.06 is an example, not a tariff; AEMO negative-price periods punish export-heavy dispatch.<cite>Source: research Ch.1 + Ch.8 · illustration only</cite></blockquote>
+</section>
+
+<section id="offtake"><h2>Offtake · flow 06</h2>
+<blockquote>Onsite tenant PPA as anchor vs export bought by a licensed retailer or wholesale participant; aggregator-VPP monetises flexibility only; settlement follows metering of onsite vs export volumes. Retailer names in the research are examples; offers change. See also <a href="#market-roles">market roles</a> and <a href="#contacts">market contacts</a>.<cite>Source: research Ch.6 · re-price per site</cite></blockquote>
+</section>
+
+<section id="leases"><h2>Leases · flows 01, 07</h2>
+<blockquote>SPV rooftop licence plus tripartite terms; 14-clause list; landlord payment for roof use; make-good and exit conditions defined upfront.<cite>Source: research Ch.7 · confirm with legal adviser</cite></blockquote>
+</section>
+
+<section id="epc"><h2>EPC and vendors · flows 04, 05</h2>
+<blockquote>LONGi/Jinko/Sungrow as panel/inverter examples (not endorsements); 8 EPC essentials price the build; CER STC treatment for 100 kW–1 MW applies from Oct 2026.<cite>Source: research Ch.9 + Ch.2 · verify dates and specs</cite></blockquote>
+</section>
+
+<section id="contacts"><h2>Market contacts · first calls (verified links, Sep 2026)</h2>
+<blockquote>First-contact order: Flow Power (1300 08 06 08, first call), Origin commercial solar PPA (commercial.solar.ppa@originenergy.com.au, 1300 576 101), EnergyAustralia, AGL, Shell Energy, SmartestEnergy. Amber, Discover Energy, and Diamond Energy skew residential/small-scale — engage later. Full list with ask script: <a href="../guide/index.html#market-contacts">guide · market contacts</a>.<cite>Source: HEJ playbook, Sep 2026 · re-price per site</cite></blockquote>
+<p>Retailers and VPP: <a href="https://flowpower.com.au/">Flow Power</a> · <a href="https://www.originenergy.com.au/business/solar/">Origin commercial solar</a> · <a href="https://www.energyaustralia.com.au/commercial-and-industrial/solar-pv-and-battery">EnergyAustralia C&amp;I</a> · <a href="https://www.agl.com.au/business">AGL business</a> · <a href="https://shellenergy.com.au/">Shell Energy AU</a> · <a href="https://smartestenergy.com.au/">SmartestEnergy</a> · <a href="https://diamondenergy.com.au/">Diamond Energy</a> · <a href="https://discoverenergy.com.au/">Discover Energy</a> · <a href="https://amber.com.au/">Amber</a></p>
+</section>
+
+<section id="hardware"><h2>Installers and hardware lanes (link lists — not diagram bloat)</h2>
+<blockquote>Competing proposals only, never endorsements or sole-source. Requirement bar: REC + SAA accreditation + C&I EPC + DNSP + BESS experience, Energy Safe Victoria, CER/SRES compliance. Buy via Australian distributors on the first project. Prices are planning ranges: conservative 1 MWp PV A$0.9–1.2m; 2 MWh BESS A$1.4–2.4m installed; factory-only US$20–70k figures are misleading and never enter the model.<cite>Source: HEJ playbook, Sep 2026 · verify per site</cite></blockquote>
+<p>Installers: <a href="https://energus.com.au/">Energus</a> · <a href="https://choiceenergy.com.au/">Choice Energy</a> · <a href="https://www.bvrenergy.com.au/">BVR Energy</a> · <a href="https://kratos-energy.com/">Kratos Energy</a></p>
+<p>PV: <a href="https://www.jinkosolar.com/">Jinko Solar</a> · <a href="https://www.longi.com/au/">LONGi Australia</a> · <a href="https://www.trinasolar.com/au">Trina Solar Australia</a> · <a href="https://www.canadiansolar.com/au">Canadian Solar</a></p>
+<p>BESS C&amp;I: <a href="https://www.sungrowpower.com.au/">Sungrow Australia</a> · <a href="https://sigenergy.com/au">Sigenergy Australia</a> · <a href="https://www.whes.com/au/products/pc-g1-100kw-233kwh-all-in-one-energy-storage-system">WHES 100kW/233kWh</a> · <a href="https://redx.com.au/">RedX (Renox)</a></p>
+</section>
+
+<section id="operations"><h2>Operations and risks · flow 07</h2>
+<blockquote>Monitor via EMS and metering; scheduled O&amp;M; fault/replace with warranty capture; community reporting alongside operations; 90-day plan and 11 adviser questions structure the pilot.<cite>Source: research Ch.10–Ch.12 + appendices · 18 Appendix A sources listed in the guide</cite></blockquote>
+</section>
+
+<script>(function(){var b=document.getElementById('theme');b.onclick=function(){var h=document.documentElement;var t=h.getAttribute('data-theme')==='light'?'dark':'light';h.setAttribute('data-theme',t);try{localStorage.setItem('solar-theme',t)}catch(_){}};})();</script>
+<footer class="site"><div class="site-brand">HEJ Energy &amp; Technology · Rooftop Solar + Storage · Victoria</div><p>Documentation only — not legal or engineering advice. Figures are planning assumptions; verify at site and at financial close.</p></footer>
+</main></body>
+</html>

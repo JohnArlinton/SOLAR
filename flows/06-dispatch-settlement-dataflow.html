@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%230A2138'/%3E%3Ccircle cx='20' cy='14' r='6' fill='%23FFB627'/%3E%3Cpath d='M10 25h20l-3 9H13z' fill='%2300B4A2'/%3E%3C/svg%3E">
+<title>06 · Dispatch and settlement data flow — Solar BESS Flows</title>
+<script>(function(){try{var p=new URLSearchParams(location.search).get('theme');var t=(p==='light'||p==='dark')?p:null;if(!t){try{t=localStorage.getItem('solar-theme')}catch(_){}}if(t!=='light'&&t!=='dark')t='light';document.documentElement.setAttribute('data-theme',t)}catch(_){}})();</script>
+<style>
+:root,[data-theme="light"]{--bg:#F6F8FB;--panel:#FFFFFF;--ink:#16222E;--muted:#4A5B6B;--line:#DCE4EC;--navy:#0A2138;--navy-2:#0E2E4F;--amber:#FFB627;--amber-deep:#B26A00;--teal:#00B4A2;--amber-bg:#FFF6E0;--amber-line:#E8A100;--accent:#0E2E4F;--link:#0B3D91;color-scheme:light}
+[data-theme="dark"]{--bg:#0B1523;--panel:#131F30;--ink:#E8EEF5;--muted:#9FB0C2;--line:#2A3B52;--navy:#0A2138;--navy-2:#0E2E4F;--amber:#FFB627;--amber-deep:#FFB627;--teal:#00B4A2;--amber-bg:#241A08;--amber-line:#E8A100;--accent:#FFB627;--link:#FFB627;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.brandbar{background:linear-gradient(115deg,#0A2138 0%,#0E2E4F 55%,#0B4F4A 130%);color:#fff}
+.brandwrap{width:min(960px,calc(100% - 32px));margin:auto;padding:14px 0}
+.brand{display:inline-flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.mark{flex:none}.wordmark strong{display:block;font-size:.98rem;letter-spacing:-.01em;line-height:1.2}.wordmark small{display:block;font:600 .66rem/1.5 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:#FFB627}
+main{width:min(960px,calc(100% - 32px));margin:auto;padding:32px 0 64px}a{color:var(--link)}.brandbar a{color:#fff}
+.top{display:inline-block;font:700 .72rem/1.2 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;margin:0}
+.top a{color:inherit}h1{font-size:clamp(1.7rem,4vw,2.6rem);letter-spacing:-.025em;line-height:1.1;margin:.5em 0 .2em}
+h1::after{content:"";display:block;width:120px;height:4px;border-radius:2px;margin-top:12px;background:linear-gradient(90deg,#FFB627,#FF8C1A,#00B4A2)}
+h2{letter-spacing:-.015em}.sum{color:var(--muted);max-width:62ch}
+.bar{display:flex;gap:8px;margin:16px 0;flex-wrap:wrap}
+button{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:10px;padding:7px 14px;font:inherit;cursor:pointer}
+button:hover{border-color:#FFB627}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #FFB627;outline-offset:2px}.brandwrap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.backmenu{display:inline-block;padding:6px 14px;border-radius:999px;background:#FFB627;color:#0A2138;font:700 .72rem/1.5 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}.backmenu:hover{background:#FFC95C}.backmenu:focus-visible{outline:3px solid #FFB627;outline-offset:3px}
+input{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:10px;padding:7px 12px;font:inherit;width:min(320px,100%)}
+.mermaid{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;overflow:auto;box-shadow:0 10px 28px #0a213814}
+table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:9px 12px;border-top:1px solid var(--line);vertical-align:top}
+th{border-top:0;background:#0E2E4F;color:#fff;font-family:ui-monospace,Menlo,monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+[data-theme="dark"] th{background:#1B2E48;color:#FFB627}
+.risk{background:var(--amber-bg);border:1px solid var(--amber-line);border-left-width:5px;border-radius:12px;padding:10px 14px;margin:10px 0}
+.risk.rose{border-color:#C0576A}.ev{font-size:.9rem;color:var(--muted)}code{overflow-wrap:anywhere;color:var(--accent)}
+[data-theme="dark"] code{color:#FFB627}
+footer.site{margin-top:36px;border-top:1px solid var(--line);padding-top:18px;font-size:.88rem;color:var(--muted)}
+.site-brand{font:700 .72rem/1.5 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+[data-theme="dark"] .site-brand{color:#FFB627}
+</style>
+</head>
+<body><header class="brandbar"><div class="brandwrap"><a class="brand" href="index.html" aria-label="HEJ Energy and Technology — collection home"><svg class="mark" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect width="40" height="40" rx="9" fill="#0A2138" stroke="#FFB627" stroke-opacity=".45"/><circle cx="20" cy="13.5" r="5.4" fill="#FFB627"/><g stroke="#FFB627" stroke-width="1.8" stroke-linecap="round"><line x1="20" y1="3.4" x2="20" y2="5.6"/><line x1="27.4" y1="6.1" x2="25.9" y2="7.6"/><line x1="30.2" y1="13.5" x2="28" y2="13.5"/><line x1="27.4" y1="20.9" x2="25.9" y2="19.4"/><line x1="12.6" y1="6.1" x2="14.1" y2="7.6"/><line x1="9.8" y1="13.5" x2="12" y2="13.5"/><line x1="12.6" y1="20.9" x2="14.1" y2="19.4"/></g><path d="M10 25.5h20l-2.8 8.5H12.8z" fill="#00B4A2"/><g stroke="#0A2138" stroke-width="1.2"><line x1="15" y1="25.5" x2="16" y2="34"/><line x1="20" y1="25.5" x2="20" y2="34"/><line x1="25" y1="25.5" x2="24" y2="34"/><line x1="11.2" y1="29.5" x2="28.8" y2="29.5"/></g></svg><span class="wordmark"><strong>HEJ Energy &amp; Technology</strong><small>Rooftop Solar + Storage · Victoria</small></span></a><a class="backmenu" href="../index.html">← Back to main menu</a></div></header><main>
+<p class="top"><a href="../index.html">← Back to main menu</a> · <a href="index.html">← Collection</a> · 06 · Data flow</p>
+<h1>Dispatch and settlement</h1>
+<p class="sum">Energy flows PV → onsite tenant load first under the anchor PPA; surplus charges the BESS or exports. The EMS dispatches discharge at value. Export is bought by a licensed retailer or wholesale market participant under the under-30 MW General Exemption Order pathway and settles through AEMO/NEM; the aggregator-VPP monetises flexibility (arbitrage, FCAS) but never buys energy. The DNSP and VicGrid carry the energy — they never buy it. Revenue stack: onsite savings (primary), export (secondary), arbitrage (secondary), FCAS (upside), certificates (haircut). Worked illustration only: 60/40 onsite/export at 0.12/0.06 — a planning assumption, not a tariff.</p>
+<div class="bar"><button id="theme" type="button">Toggle light/dark</button></div>
+<pre class="mermaid">flowchart LR
+  PV[PV generation] --> LOAD[Tenant load\nonsite PPA anchor]
+  PV --> CHG[BESS charge\nsurplus]
+  CHG --> DIS[BESS discharge\nat value]
+  DIS --> LOAD
+  DIS --> EXP[Export\nsecondary]
+  PV --> EXP
+  LOAD --> M[Meter\nonsite vs export]
+  EXP --> M
+  M --> RA[Licensed retailer /\nwholesale participant\nbuys export]
+  RA --> NEM[AEMO/NEM settlement\n+ FCAS + certificates]
+  VPP[Aggregator-VPP\nmonetises flexibility\nnever buys] -.- DIS
+  NEM --> SPV[SPV revenue]
+  NET[DNSP + VicGrid\ntransport only\nnever buyers] -.- M
+</pre>
+<noscript><p>Diagram needs JavaScript (Mermaid CDN). The steps table below carries the same content.</p></noscript>
+<h2>Steps</h2>
+<input id="q" type="search" placeholder="Filter steps…" aria-label="Filter steps">
+<table id="steps"><thead><tr><th>#</th><th>Flow</th><th>Detail</th></tr></thead><tbody>
+<tr><td>1</td><td>Onsite first</td><td>Every PV kWh offsets Tier-1 tenant load under the anchor PPA before anything else; highest value per the stack.</td></tr>
+<tr><td>2</td><td>Charge surplus</td><td>Midday surplus charges the BESS instead of exporting at weak prices.</td></tr>
+<tr><td>3</td><td>Discharge at value</td><td>EMS discharges into evening load or priced export windows; the aggregator-VPP optimises timing for arbitrage and FCAS but never buys the energy.</td></tr>
+<tr><td>4</td><td>Export remainder</td><td>Only genuine surplus exports via the licensed retailer or wholesale participant (&lt;30 MW exempt pathway); AEMO negative-price periods can punish excess. The retailer is not obliged to buy at our price.</td></tr>
+<tr><td>5</td><td>Settle</td><td>Tenant pays the onsite PPA; the retailer/wholesale participant settles NEM export; FCAS is upside, certificates take a haircut. DNSP/VicGrid settle nothing — transport only.</td></tr>
+</tbody></table>
+<h2>Revenue stack</h2>
+<table><thead><tr><th>Layer</th><th>Role</th></tr></thead><tbody>
+<tr><td>Onsite savings</td><td>Primary — displaces retail daytime cost</td></tr>
+<tr><td>Export</td><td>Secondary — priced at wholesale/export terms</td></tr>
+<tr><td>Arbitrage</td><td>Secondary — BESS shifts cheap to priced periods</td></tr>
+<tr><td>FCAS</td><td>Upside — frequency services via aggregator (flexibility only, never a buyer)</td></tr>
+<tr><td>Certificates</td><td>Haircut — STC/deeming value discounted at close</td></tr>
+</tbody></table>
+<h2>Risks</h2>
+<div class="risk"><strong>Illustration mistaken for offer.</strong> The 60/40 at 0.12/0.06 split is an example, not a bankable tariff. Re-price per site.</div>
+<div class="risk"><strong>Negative prices.</strong> Export-heavy dispatch can earn little or less. Keep onsite-first logic.</div>
+<div class="risk"><strong>Aggregator mistaken for buyer.</strong> The aggregator-VPP monetises flexibility; only the licensed retailer or wholesale participant buys export. Contract accordingly.</div>
+<h2>Evidence</h2>
+<p class="ev">See <a href="model-evidence.html#revenue">revenue excerpts</a> and <a href="model-evidence.html#offtake">offtake excerpts</a>. STC rule: CER treatment for 100 kW–1 MW applies from Oct 2026 (planning assumption).</p>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+(function(){var b=document.getElementById('theme');b.onclick=function(){var h=document.documentElement;var t=h.getAttribute('data-theme')==='light'?'dark':'light';h.setAttribute('data-theme',t);try{localStorage.setItem('solar-theme',t)}catch(_){}};
+var q=document.getElementById('q'),rows=document.querySelectorAll('#steps tbody tr');q.oninput=function(){var s=q.value.toLowerCase();rows.forEach(function(r){r.style.display=r.textContent.toLowerCase().indexOf(s)>-1?'':'none'})};
+try{if(window.mermaid){var __hejDark=document.documentElement.getAttribute('data-theme')==='dark';mermaid.initialize({startOnLoad:true,theme:'base',themeVariables:{primaryColor:'#0E2E4F',primaryTextColor:'#FFFFFF',primaryBorderColor:'#FFB627',lineColor:__hejDark?'#FFB627':'#0E2E4F',secondaryColor:__hejDark?'#131F30':'#E8EEF5',tertiaryColor:'#00B4A2',textColor:__hejDark?'#E8EEF5':'#16222E',mainBkg:'#0E2E4F',nodeBorder:'#FFB627',clusterBkg:__hejDark?'#131F30':'#F6F8FB',edgeLabelBackground:__hejDark?'#0B1523':'#FFFFFF'}})}}catch(_){}})();
+</script>
+<footer class="site"><div class="site-brand">HEJ Energy &amp; Technology · Rooftop Solar + Storage · Victoria</div><p class="fine">Documentation only — not legal or engineering advice. Capacity, yield, and price figures are planning assumptions; verify at site and at financial close.</p></footer>
+</main></body>
+</html>
